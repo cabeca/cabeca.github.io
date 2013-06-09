@@ -42,7 +42,7 @@ Well, it seems firefox has some issues checking same origin policy with private 
 
 `10.0.0.10.xip.io:3000/`
 
-And _voilá_! The letters also fade in firefox (version 21 in my case)! So now you can deploy your shiny logo confident that it will work when your users view it served from production machines. I'm assuming you do use a domain name for your site...
+And _voilà_! The letters also fade in firefox (version 21 in my case)! So now you can deploy your shiny logo confident that it will work when your users view it served from production machines. I'm assuming you do use a domain name for your site...
 
 This firefox idiosyncrasy applies to embedded svgs, but also to iframes, and probably to any other object you can embed in your page.
 
