@@ -4,7 +4,7 @@
   <title><![CDATA[Random Head Dumps]]></title>
   <link href="http://cabeca.github.io/atom.xml" rel="self"/>
   <link href="http://cabeca.github.io/"/>
-  <updated>2013-06-09T18:05:15+01:00</updated>
+  <updated>2013-06-09T19:20:37+01:00</updated>
   <id>http://cabeca.github.io/</id>
   <author>
     <name><![CDATA[Miguel Cabeça]]></name>
@@ -12,6 +12,230 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Putting some twilight on octopress]]></title>
+    <link href="http://cabeca.github.io/blog/2013/06/09/putting-some-twilight-on-octopress/"/>
+    <updated>2013-06-09T18:11:00+01:00</updated>
+    <id>http://cabeca.github.io/blog/2013/06/09/putting-some-twilight-on-octopress</id>
+    <content type="html"><![CDATA[<p>So, this blog runs on <a href="http://octopress.org">Octopress</a> which is great, but the default solarized syntax highlighting is&hellip; how to put this gently&hellip; colorful in a non-pleasant way. This is how code looks with the default theme:</p>
+
+<p><img src="http://cabeca.github.io/images/octopress_solarized_syntax_highlighting.png" alt="Octopress Solarized Syntax Highlighting" /></p>
+
+<p>So I decided to change that to my prefered Twilight theme from Sublime Text 2:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Float</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">number_decimal_places</span>
+</span><span class='line'>    <span class="nb">self</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">length</span><span class="o">-</span><span class="mi">2</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">to_fraction</span>
+</span><span class='line'>    <span class="n">higher</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="nb">self</span><span class="o">.</span><span class="n">number_decimal_places</span>
+</span><span class='line'>    <span class="n">lower</span> <span class="o">=</span> <span class="nb">self</span><span class="o">*</span><span class="n">higher</span>
+</span><span class='line'>    <span class="n">gcden</span> <span class="o">=</span> <span class="n">greatest_common_divisor</span><span class="p">(</span><span class="n">higher</span><span class="p">,</span> <span class="n">lower</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">return</span> <span class="p">(</span><span class="n">lower</span><span class="o">/</span><span class="n">gcden</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">,</span> <span class="p">(</span><span class="n">higher</span><span class="o">/</span><span class="n">gcden</span><span class="p">)</span><span class="o">.</span><span class="n">round</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="kp">private</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">greatest_common_divisor</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</span><span class='line'>     <span class="k">while</span> <span class="n">a</span><span class="o">%</span><span class="n">b</span> <span class="o">!=</span> <span class="mi">0</span>
+</span><span class='line'>       <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">round</span><span class="p">,(</span><span class="n">a</span><span class="o">%</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">round</span>
+</span><span class='line'>     <span class="k">end</span>
+</span><span class='line'>     <span class="k">return</span> <span class="n">b</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Phew! Bland and pastel colors > Bright and screamming colors. Much better!</p>
+
+<p>There is a <a href="http://blog.alestanis.com/2013/02/04/octopress-and-the-twilight-color-scheme/">blog post from Alejandra Estanislao</a> on how to do this but it goes a little too far, replacing the syntax highlighting engine of octopress from Pygments to CodeRay. I didn&rsquo;t want to do that (Pygments is a fine syntax highlighter) so, I digged a little deeper and found this <a href="https://gist.github.com/dansimpson/803005">twilight_pigments.css gist by Dan Simpson</a>.</p>
+
+<p>With this in hand I&rsquo;ve set out to discover where to put it inside octopress. The pygments syntax highlighting css rules are buried deep inside <code>sass/partials/_syntax.scss</code> nested in a <code>.pre-code</code> class. You can put custom scss in <code>sass/custom/_styles.scss</code> as this file will be imported last, and will override other styles in the cascade.</p>
+
+<p>So I&rsquo;ve adapted the twilight pigmets css to scss, changed <code>.pre.code</code> to <code>.pre-code</code>, added <code>!important</code> everywhere, changed some colors using Sublime Text 2 as a reference and ended up with this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+</pre></td><td class='code'><pre><code class='sass'><span class='line'><span class="c1">// This File is imported last, and will override other styles in the cascade</span>
+</span><span class='line'><span class="c1">// Add styles here to make changes without digging in too much</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.pre-code</span> <span class="err">{</span>
+</span><span class='line'>  <span class="na">font-family</span><span class="o">:</span> <span class="n">Consolas</span><span class="o">,</span> <span class="n">Monaco</span><span class="o">,</span><span class="s2">&quot;Lucida Console&quot;</span><span class="err">;</span>
+</span><span class='line'>  <span class="na">overflow</span><span class="o">:</span> <span class="no">scroll</span><span class="err">;</span>
+</span><span class='line'>  <span class="na">overflow-y</span><span class="o">:</span> <span class="no">hidden</span><span class="err">;</span>
+</span><span class='line'>  <span class="na">display</span><span class="o">:</span> <span class="no">block</span><span class="err">;</span>
+</span><span class='line'>  <span class="na">padding</span><span class="o">:</span> <span class="mf">.8</span><span class="kt">em</span><span class="err">;</span>
+</span><span class='line'>  <span class="na">overflow-x</span><span class="o">:</span> <span class="no">auto</span><span class="err">;</span>
+</span><span class='line'>  <span class="na">line-height</span><span class="o">:</span> <span class="mi">1</span><span class="mf">.45</span><span class="kt">em</span><span class="err">;</span>
+</span><span class='line'>  <span class="na">background</span><span class="o">:</span> <span class="mh">#181818</span> <span class="nv">!important</span><span class="err">;</span>
+</span><span class='line'>  <span class="na">color</span><span class="o">:</span> <span class="mh">#F8F8F8</span> <span class="nv">!important</span><span class="err">;</span>
+</span><span class='line'>  <span class="na">span</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#F8F8F8</span> <span class="nv">!important</span><span class="err">;</span> <span class="err">}</span>
+</span><span class='line'>  <span class="na">span</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">font-style</span><span class="o">:</span> <span class="no">normal</span> <span class="nv">!important</span><span class="err">;</span> <span class="no">font-weight</span><span class="o">:</span> <span class="no">normal</span> <span class="nv">!important</span><span class="err">;</span> <span class="err">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="na">.hll</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">background-color</span><span class="o">:</span> <span class="mh">#ffffcc</span> <span class="nv">!important</span> <span class="err">}</span>
+</span><span class='line'>  <span class="na">.c</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#5F5A60</span> <span class="nv">!important</span><span class="err">;</span> <span class="no">font-style</span><span class="o">:</span> <span class="no">italic</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Comment </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.err</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">border</span><span class="o">:</span><span class="mh">#B22518</span><span class="err">;</span> <span class="err">}</span> <span class="cm">/* Error </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.k</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#CDA869</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Keyword </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.cm</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#5F5A60</span> <span class="nv">!important</span><span class="err">;</span> <span class="no">font-style</span><span class="o">:</span> <span class="no">italic</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Comment.Multiline </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.cp</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#5F5A60</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Comment.Preproc </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.c1</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#5F5A60</span> <span class="nv">!important</span><span class="err">;</span> <span class="no">font-style</span><span class="o">:</span> <span class="no">italic</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Comment.Single </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.cs</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#5F5A60</span> <span class="nv">!important</span><span class="err">;</span> <span class="no">font-style</span><span class="o">:</span> <span class="no">italic</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Comment.Special </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.gd</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">background</span><span class="o">:</span> <span class="mh">#420E09</span> <span class="err">}</span> <span class="cm">/* Generic.Deleted </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.ge</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">font-style</span><span class="o">:</span> <span class="no">italic</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Generic.Emph </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.gr</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">background</span><span class="o">:</span> <span class="mh">#B22518</span> <span class="err">}</span> <span class="cm">/* Generic.Error </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.gh</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#000080</span> <span class="nv">!important</span><span class="err">;</span> <span class="no">font-weight</span><span class="o">:</span> <span class="no">bold</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Generic.Heading </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.gi</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">background</span><span class="o">:</span> <span class="mh">#253B22</span> <span class="err">}</span> <span class="cm">/* Generic.Inserted </span><span class="c">*/</span>
+</span><span class='line'>  <span class="nc">.go</span> <span class="err">{</span>  <span class="err">}</span> <span class="o">/*</span> <span class="nt">Generic</span><span class="nc">.Output</span> <span class="o">*/</span>
+</span><span class='line'>  <span class="na">.gp</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">font-weight</span><span class="o">:</span> <span class="no">bold</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Generic.Prompt </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.gs</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">font-weight</span><span class="o">:</span> <span class="no">bold</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Generic.Strong </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.gu</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#800080</span> <span class="nv">!important</span><span class="err">;</span> <span class="no">font-weight</span><span class="o">:</span> <span class="no">bold</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Generic.Subheading </span><span class="c">*/</span>
+</span><span class='line'>  <span class="nc">.gt</span> <span class="err">{</span>  <span class="err">}</span> <span class="o">/*</span> <span class="nt">Generic</span><span class="nc">.Traceback</span> <span class="o">*/</span>
+</span><span class='line'>  <span class="nc">.kc</span> <span class="err">{</span>  <span class="err">}</span> <span class="o">/*</span> <span class="nt">Keyword</span><span class="nc">.Constant</span> <span class="o">*/</span>
+</span><span class='line'>  <span class="na">.kd</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#e9df8f</span> <span class="nv">!important</span><span class="err">;</span>  <span class="err">}</span> <span class="cm">/* Keyword.Declaration </span><span class="c">*/</span>
+</span><span class='line'>  <span class="nc">.kn</span> <span class="err">{</span>  <span class="err">}</span> <span class="o">/*</span> <span class="nt">Keyword</span><span class="nc">.Namespace</span> <span class="o">*/</span>
+</span><span class='line'>  <span class="na">.kp</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#CF6A4C</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Keyword.Pseudo </span><span class="c">*/</span>
+</span><span class='line'>  <span class="nc">.kr</span> <span class="err">{</span>  <span class="err">}</span> <span class="o">/*</span> <span class="nt">Keyword</span><span class="nc">.Reserved</span> <span class="o">*/</span>
+</span><span class='line'>  <span class="nc">.kt</span> <span class="err">{</span>  <span class="err">}</span> <span class="o">/*</span> <span class="nt">Keyword</span><span class="nc">.Type</span> <span class="o">*/</span>
+</span><span class='line'>  <span class="nc">.m</span> <span class="err">{</span> <span class="err">}</span> <span class="o">/*</span> <span class="nt">Literal</span><span class="nc">.Number</span> <span class="o">*/</span>
+</span><span class='line'>  <span class="na">.s</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#8F9D6A</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Literal.String </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.na</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#F9EE98</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Name.Attribute </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.nb</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#CDA869</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Name.Builtin </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.nc</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#9B703F</span> <span class="nv">!important</span><span class="err">;</span> <span class="no">font-weight</span><span class="o">:</span> <span class="no">bold</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Name.Class </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.no</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#7587A6</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Name.Constant </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.nd</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#7587A6</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Name.Decorator </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.ni</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#CF6A4C</span> <span class="nv">!important</span><span class="err">;</span> <span class="no">font-weight</span><span class="o">:</span> <span class="no">bold</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Name.Entity </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.nf</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#9B703F</span> <span class="nv">!important</span><span class="err">;</span> <span class="no">font-weight</span><span class="o">:</span> <span class="no">bold</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Name.Function </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.nn</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#9B703F</span> <span class="nv">!important</span><span class="err">;</span> <span class="no">font-weight</span><span class="o">:</span> <span class="no">bold</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Name.Namespace </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.nt</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#CDA869</span> <span class="nv">!important</span><span class="err">;</span> <span class="no">font-weight</span><span class="o">:</span> <span class="no">bold</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Name.Tag </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.nv</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#7587A6</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Name.Variable </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.o</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#CDA869</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Operator </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.ow</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#AA22FF</span> <span class="nv">!important</span><span class="err">;</span> <span class="no">font-weight</span><span class="o">:</span> <span class="no">bold</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Operator.Word </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.w</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#141414</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Text.Whitespace </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.mf</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#CF6A4C</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Literal.Number.Float </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.mh</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#CF6A4C</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Literal.Number.Hex </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.mi</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#CF6A4C</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Literal.Number.Integer </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.mo</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#CF6A4C</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Literal.Number.Oct </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.sb</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#8F9D6A</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Literal.String.Backtick </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.sc</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#8F9D6A</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Literal.String.Char </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.sd</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#8F9D6A</span> <span class="nv">!important</span><span class="err">;</span> <span class="no">font-style</span><span class="o">:</span> <span class="no">italic</span> <span class="nv">!important</span><span class="err">;</span> <span class="err">}</span> <span class="cm">/* Literal.String.Doc </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.s2</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#8F9D6A</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Literal.String.Double </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.se</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#F9EE98</span> <span class="nv">!important</span><span class="err">;</span> <span class="no">font-weight</span><span class="o">:</span> <span class="no">bold</span> <span class="nv">!important</span><span class="err">;</span> <span class="err">}</span> <span class="cm">/* Literal.String.Escape </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.sh</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#8F9D6A</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Literal.String.Heredoc </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.si</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#DAEFA3</span> <span class="nv">!important</span><span class="err">;</span> <span class="no">font-weight</span><span class="o">:</span> <span class="no">bold</span> <span class="nv">!important</span><span class="err">;</span> <span class="err">}</span> <span class="cm">/* Literal.String.Interpol </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.sx</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#8F9D6A</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Literal.String.Other </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.sr</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#E9C062</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Literal.String.Regex </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.s1</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#8F9D6A</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Literal.String.Single </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.ss</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#CF6A4C</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Literal.String.Symbol </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.bp</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#00aaaa</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Name.Builtin.Pseudo </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.vc</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#7587A6</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Name.Variable.Class </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.vg</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#7587A6</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Name.Variable.Global </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.vi</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#7587A6</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Name.Variable.Instance </span><span class="c">*/</span>
+</span><span class='line'>  <span class="na">.il</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#009999</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Literal.Number.Integer.Long </span><span class="c">*/</span>
+</span><span class='line'><span class="err">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I had to remove the whole <code>.pre-code</code> block inside <code>sass/partials/_syntax.scss</code> because some styles kept bleeding through the css cascade and I didn&rsquo;t want to waste more time chasing after them. You can see
+<a href="https://github.com/cabeca/cabeca.github.io/commit/7fc9690ace63e9373bce8010f8a68016fce549dc">the complete commit in GitHub</a>.</p>
+
+<p>The syntax highlighting is not exactly the same as Sublime&rsquo;s but is pretty close. And there you have it, beautiful code in Octopress.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Firefox: same origin policy woes with private adress ranges]]></title>
@@ -67,7 +291,7 @@ Open up the inspector and you&rsquo;ll see something like this (or similar):</p>
 
 <p><code>10.0.0.10.xip.io:3000/</code></p>
 
-<p>And <em>voilá</em>! The letters also fade in firefox (version 21 in my case)! So now you can deploy your shiny logo confident that it will work when your users view it served from production machines. I&rsquo;m assuming you do use a domain name for your site&hellip;</p>
+<p>And <em>voilà</em>! The letters also fade in firefox (version 21 in my case)! So now you can deploy your shiny logo confident that it will work when your users view it served from production machines. I&rsquo;m assuming you do use a domain name for your site&hellip;</p>
 
 <p>This firefox idiosyncrasy applies to embedded svgs, but also to iframes, and probably to any other object you can embed in your page.</p>
 
