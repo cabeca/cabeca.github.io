@@ -35,7 +35,7 @@ private
 end
 ```
 
-Phew! Bland and pastel colors > Bright and screamming colors. Much better!
+Phew! Bland and pastel colors > Bright and screaming colors. Much better!
 
 There is a [blog post from Alejandra Estanislao](http://blog.alestanis.com/2013/02/04/octopress-and-the-twilight-color-scheme/) on how to do this but it goes a little too far, replacing the syntax highlighting engine of octopress from Pygments to CodeRay. I didn't want to do that (Pygments is a fine syntax highlighter) so, I digged a little deeper and found this [twilight_pigments.css gist by Dan Simpson](https://gist.github.com/dansimpson/803005).
 
