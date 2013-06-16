@@ -4,7 +4,7 @@
   <title><![CDATA[Random Head Dumps]]></title>
   <link href="http://cabeca.github.io/atom.xml" rel="self"/>
   <link href="http://cabeca.github.io/"/>
-  <updated>2013-06-09T19:33:14+01:00</updated>
+  <updated>2013-06-16T17:49:18+01:00</updated>
   <id>http://cabeca.github.io/</id>
   <author>
     <name><![CDATA[Miguel Cabeça]]></name>
@@ -12,6 +12,141 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Waiting for completed Ajax in Capybara and other tricks.]]></title>
+    <link href="http://cabeca.github.io/blog/2013/06/16/waiting-for-completed-ajax-in-capybara-and-other-tricks/"/>
+    <updated>2013-06-16T16:17:00+01:00</updated>
+    <id>http://cabeca.github.io/blog/2013/06/16/waiting-for-completed-ajax-in-capybara-and-other-tricks</id>
+    <content type="html"><![CDATA[<p><a href="https://github.com/jnicklas/capybara">Capybara 2.1</a> does a pretty good job waiting for elements to appear or disapear from the page you&rsquo;re testing. Every Capybara finder method (<code>find_field</code>, <code>find_button</code>), or action method that depends on finding something (<code>fill_in</code>, <code>choose</code>, <code>check</code>), or even querying methods (<code>has_content?</code>, <code>has_css?</code>) have a built-in waiting mechanism explained in <a href="https://github.com/jnicklas/capybara#asynchronous-javascript-ajax-and-friends">the README</a>.
+Essentially, Capybara will wait for the specified element to appear or disapear from the page, before asserting or performing the required action. The amount of time to wait is configurable.
+For example, if you have this (artificial) test:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">visit</span> <span class="s1">&#39;http://www.wikipedia.org/&#39;</span>
+</span><span class='line'><span class="n">fill_in</span> <span class="s1">&#39;search&#39;</span><span class="p">,</span> <span class="ss">with</span><span class="p">:</span> <span class="s1">&#39;Lisbon&#39;</span>
+</span><span class='line'><span class="n">click_button</span> <span class="s1">&#39;→&#39;</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">find</span><span class="p">(</span><span class="s1">&#39;#firstHeading&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+</span><span class='line'><span class="c1"># outputs &#39;Lisbon&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Capybara will wait for an element with name or id <code>search</code> to appear on the page before filling it with <code>Lisbon</code>. After that it will wait for the button labeled <code>→</code> to apear on the page before clicking it. Finally, it will wait for the element with a CSS id of <code>firstHeading</code> to appear on the page for the find action.</p>
+
+<p>This is all very good <strong>if you know what to wait for</strong> in the first place. If clicking a button triggers some Ajax call that fills some select element with random data, you will have some trouble knowing what to wait for.</p>
+
+<p>For these situations you can add the following code to your testing harness to wait for completed Ajax requests.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Add this to every javascript in testing mode</span>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">jQuery</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">_ajax_sent</span>      <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// number of sent ajax requests</span>
+</span><span class='line'>  <span class="nx">_ajax_completed</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// number of completed ajax requests</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ajaxSend</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span> <span class="p">{</span> <span class="nx">_ajax_sent</span><span class="o">++</span><span class="p">;</span> <span class="p">});</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ajaxComplete</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span> <span class="p">{</span> <span class="nx">_ajax_completed</span><span class="o">++</span><span class="p">;</span> <span class="p">});</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This first snippet adds two custom Ajax counters that will increment for each sent and completed request.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># Add this to a new file</span>
+</span><span class='line'><span class="c1"># spec/support/capybara_helpers.rb</span>
+</span><span class='line'><span class="k">module</span> <span class="nn">CapybaraHelpers</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">waiting_for_completed_ajax</span><span class="p">(</span><span class="n">seconds</span> <span class="o">=</span> <span class="no">Capybara</span><span class="o">.</span><span class="n">default_wait_time</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">ajax_sent</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">evaluate_script</span><span class="p">(</span><span class="s2">&quot;_ajax_sent&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_i</span>
+</span><span class='line'>    <span class="k">yield</span>
+</span><span class='line'>    <span class="k">raise</span> <span class="s2">&quot;No Ajax request sent after action. Can&#39;t wait for completed Ajax.&quot;</span> <span class="k">if</span> <span class="n">ajax_sent</span> <span class="o">==</span> <span class="n">page</span><span class="o">.</span><span class="n">evaluate_script</span><span class="p">(</span><span class="s2">&quot;_ajax_sent&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_i</span>
+</span><span class='line'>    <span class="ss">Timeout</span><span class="p">:</span><span class="ss">:timeout</span><span class="p">(</span><span class="n">seconds</span><span class="p">)</span> <span class="k">do</span>
+</span><span class='line'>      <span class="k">until</span><span class="p">(</span> <span class="n">page</span><span class="o">.</span><span class="n">evaluate_script</span> <span class="s2">&quot;_ajax_sent == _ajax_completed&quot;</span> <span class="p">)</span> <span class="k">do</span>
+</span><span class='line'>        <span class="nb">sleep</span> <span class="mi">0</span><span class="o">.</span><span class="mi">1</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">rescue</span> <span class="ss">Timeout</span><span class="p">:</span><span class="ss">:Error</span>
+</span><span class='line'>    <span class="k">raise</span> <span class="s2">&quot;Ajax request didn&#39;t complete in </span><span class="si">#{</span><span class="n">seconds</span><span class="si">}</span><span class="s2"> seconds (sent requests: </span><span class="si">#{</span><span class="n">page</span><span class="o">.</span><span class="n">evaluate_script</span><span class="p">(</span><span class="s1">&#39;_ajax_sent&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">, completed requests: </span><span class="si">#{</span><span class="n">page</span><span class="o">.</span><span class="n">evaluate_script</span><span class="p">(</span><span class="s1">&#39;_ajax_completed&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This snippet defines a helper method that takes a block. The method checks that the action present on the block triggers an Ajax call and waits for that call to finish. You then include it in your testing framework of choice. For example in RSpec, configure it this way:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># spec/spec_helper.rb</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;support/capybara_helpers&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">RSpec</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="no">CapybaraHelpers</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And then use it like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">visit</span> <span class="s1">&#39;/&#39;</span>
+</span><span class='line'><span class="n">waiting_for_completed_ajax</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">click_button</span> <span class="s1">&#39;generate_random_options&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="n">first_option</span> <span class="o">=</span> <span class="n">first</span><span class="p">(</span><span class="s1">&#39;#roulette option&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+</span><span class='line'><span class="nb">select</span> <span class="n">first_option</span><span class="p">,</span> <span class="ss">from</span><span class="p">:</span> <span class="s1">&#39;roulette&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Bear in mind that if you have lots of background activity firing Ajax calls this method may not work as expected. This was designed for waiting for Ajax requests triggered by some action, and may not work reliably in other situations.</p>
+
+<p>The way that you include the needed javascript in your testing environment is up to you, as this depends heavily on your testing setup. In my case I have a special javascript file that gets included in all javascript bundles if the project is in &ldquo;testing mode&rdquo;.</p>
+
+<p>Also in testing mode, a lot of external services are turned off, or mocked out, like facebook, google analytics and adsense, and other metrics tools. This will increase the reliability of your tests, because you are removing an external source of entropy that you do not control and that can interfere with the outcome of your tests. As a bonus, they will run faster.</p>
+
+<p>As a final note, in testing mode I also include this snippet in all javascript bundles:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">jQuery</span><span class="p">)</span> <span class="p">{</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">fx</span><span class="p">.</span><span class="nx">off</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This will turn off all jQuery animations and speed up your integration tests. More importantly, it will increase their reliability because stuff is not moving around while you&rsquo;re trying to click it. This is especially important if you&rsquo;re using <a href="https://github.com/jonleighton/poltergeist">Poltergeist</a> to drive <a href="http://phantomjs.org">PhantomJS</a> as it has an advanced click behaviour <a href="https://github.com/jonleighton/poltergeist#mouseeventfailed-errors">explained in the README</a>. Poltergeist asks the browser (PhantomJS) the coordinates of an element to click, and then tries to click on those coordinates. If you&rsquo;re using jQuery animations, the element may be moving around and the click will fail. If you turn off animations with <a href="http://api.jquery.com/jQuery.fx.off/">jQuery.fx.off</a> these problems will go away and you&rsquo;ll have snappier tests because you&rsquo;re not waiting for the animations to reach their final state.</p>
+
+<p>These tricks have increased the reliability and speed of my integration tests. I hope it helps yours too.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Putting some twilight on octopress]]></title>
