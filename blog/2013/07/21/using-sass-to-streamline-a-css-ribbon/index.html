@@ -1,24 +1,95 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Random Head Dumps]]></title>
-  <link href="http://cabeca.github.io/atom.xml" rel="self"/>
-  <link href="http://cabeca.github.io/"/>
-  <updated>2013-07-21T19:54:49+01:00</updated>
-  <id>http://cabeca.github.io/</id>
-  <author>
-    <name><![CDATA[Miguel Cabeça]]></name>
-    
-  </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Using Sass to streamline a css ribbon. - Random Head Dumps</title>
+  <meta name="author" content="Miguel Cabeça">
 
   
-  <entry>
-    <title type="html"><![CDATA[Using Sass to streamline a css ribbon.]]></title>
-    <link href="http://cabeca.github.io/blog/2013/07/21/using-sass-to-streamline-a-css-ribbon/"/>
-    <updated>2013-07-21T14:08:00+01:00</updated>
-    <id>http://cabeca.github.io/blog/2013/07/21/using-sass-to-streamline-a-css-ribbon</id>
-    <content type="html"><![CDATA[<p>For a simple listing page I was working on, I needed some sort of ribbon to depict a status for that listing item. Having seen lots of ribbons on various web pages I went shopping for some pre-made nice looking ribbons. I was using <a href="http://sass-lang.com">Sass</a> as a css preprocessor and <a href="https://github.com/thomas-mcdonald/bootstrap-sass">sass-bootstrap</a> for rapid prototyping so sure enough, the first google result for <code>sass bootstrap ribbon</code> yielded a <a href="https://github.com/twitter/bootstrap/issues/5550">rejected bootstrap issue</a> with a working <a href="http://jsfiddle.net/UBfCE/2/">jsfiddle</a> for a nice green ribbon.</p>
+  <meta name="description" content="For a simple listing page I was working on, I needed some sort of ribbon to depict a status for that listing item. Having seen lots of ribbons on &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://cabeca.github.io/blog/2013/07/21/using-sass-to-streamline-a-css-ribbon">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Random Head Dumps" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Random Head Dumps</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:cabeca.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Using Sass to Streamline a Css Ribbon.</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-21T14:08:00+01:00" pubdate data-updated="true">Jul 21<span>st</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>For a simple listing page I was working on, I needed some sort of ribbon to depict a status for that listing item. Having seen lots of ribbons on various web pages I went shopping for some pre-made nice looking ribbons. I was using <a href="http://sass-lang.com">Sass</a> as a css preprocessor and <a href="https://github.com/thomas-mcdonald/bootstrap-sass">sass-bootstrap</a> for rapid prototyping so sure enough, the first google result for <code>sass bootstrap ribbon</code> yielded a <a href="https://github.com/twitter/bootstrap/issues/5550">rejected bootstrap issue</a> with a working <a href="http://jsfiddle.net/UBfCE/2/">jsfiddle</a> for a nice green ribbon.</p>
 
 <p>This is the css on that fiddle:</p>
 
@@ -129,13 +200,13 @@
 
 <p>And it produces a nice looking ribbon stuck to the top right of the page:</p>
 
-<p><img src="http://cabeca.github.io/images/ribbon1.png" alt="Original ribbon" /></p>
+<p><img src="/images/ribbon1.png" alt="Original ribbon" /></p>
 
 <p>With some minor modifications I adapted the css to apply the ribbon to every item on the listing instead of the whole page. Also, I needed several colored ribbons representing different listing states. The result was pretty spiffy:</p>
 
-<p><img src="http://cabeca.github.io/images/ribbon2.png" alt="Active ribbon" />
-<img src="http://cabeca.github.io/images/ribbon3.png" alt="Deleted ribbon" />
-<img src="http://cabeca.github.io/images/ribbon4.png" alt="Inactive ribbon" /></p>
+<p><img src="/images/ribbon2.png" alt="Active ribbon" />
+<img src="/images/ribbon3.png" alt="Deleted ribbon" />
+<img src="/images/ribbon4.png" alt="Inactive ribbon" /></p>
 
 <p>But the css was growing to be a huge mess of repeated and inflexible code. For each new color needed, I had to find the right gradient and text colors, and repeat some css in an ever growing exercise of copy/paste. This was becomming pretty ugly, pretty fast:</p>
 
@@ -550,428 +621,152 @@ So I created a mixin that receives a base color, calculates both a lighter and d
 
 
 <p>There are probably other improvements to this code, but I&rsquo;m pretty happy with the results. Once you start using a css preprocessor like Sass, and realizing its power you cannot go back to plain css anymore.</p>
-]]></content>
-  </entry>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
   
-  <entry>
-    <title type="html"><![CDATA[Waiting for completed Ajax in Capybara and other tricks.]]></title>
-    <link href="http://cabeca.github.io/blog/2013/06/16/waiting-for-completed-ajax-in-capybara-and-other-tricks/"/>
-    <updated>2013-06-16T16:17:00+01:00</updated>
-    <id>http://cabeca.github.io/blog/2013/06/16/waiting-for-completed-ajax-in-capybara-and-other-tricks</id>
-    <content type="html"><![CDATA[<p><a href="https://github.com/jnicklas/capybara">Capybara 2.1</a> does a pretty good job waiting for elements to appear or disapear from the page you&rsquo;re testing. Every Capybara finder method (<code>find_field</code>, <code>find_button</code>), or action method that depends on finding something (<code>fill_in</code>, <code>choose</code>, <code>check</code>), or even querying methods (<code>has_content?</code>, <code>has_css?</code>) have a built-in waiting mechanism explained in <a href="https://github.com/jnicklas/capybara#asynchronous-javascript-ajax-and-friends">the README</a>.
-Essentially, Capybara will wait for the specified element to appear or disapear from the page, before asserting or performing the required action. The amount of time to wait is configurable.
-For example, if you have this (artificial) test:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">visit</span> <span class="s1">&#39;http://www.wikipedia.org/&#39;</span>
-</span><span class='line'><span class="n">fill_in</span> <span class="s1">&#39;search&#39;</span><span class="p">,</span> <span class="ss">with</span><span class="p">:</span> <span class="s1">&#39;Lisbon&#39;</span>
-</span><span class='line'><span class="n">click_button</span> <span class="s1">&#39;→&#39;</span>
-</span><span class='line'><span class="nb">puts</span> <span class="n">find</span><span class="p">(</span><span class="s1">&#39;#firstHeading&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
-</span><span class='line'><span class="c1"># outputs &#39;Lisbon&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
+<span class="byline author vcard">Posted by <span class="fn">Miguel Cabeça</span></span>
+
+      
 
 
-<p>Capybara will wait for an element with name or id <code>search</code> to appear on the page before filling it with <code>Lisbon</code>. After that it will wait for the button labeled <code>→</code> to apear on the page before clicking it. Finally, it will wait for the element with a CSS id of <code>firstHeading</code> to appear on the page for the find action.</p>
-
-<p>This is all very good <strong>if you know what to wait for</strong> in the first place. If clicking a button triggers some Ajax call that fills some select element with random data, you will have some trouble knowing what to wait for.</p>
-
-<p>For these situations you can add the following code to your testing harness to wait for completed Ajax requests.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Add this to every javascript in testing mode</span>
-</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">jQuery</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">_ajax_sent</span>      <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// number of sent ajax requests</span>
-</span><span class='line'>  <span class="nx">_ajax_completed</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// number of completed ajax requests</span>
-</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ajaxSend</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span> <span class="p">{</span> <span class="nx">_ajax_sent</span><span class="o">++</span><span class="p">;</span> <span class="p">});</span>
-</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ajaxComplete</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span> <span class="p">{</span> <span class="nx">_ajax_completed</span><span class="o">++</span><span class="p">;</span> <span class="p">});</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
 
 
-<p>This first snippet adds two custom Ajax counters that will increment for each sent and completed request.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># Add this to a new file</span>
-</span><span class='line'><span class="c1"># spec/support/capybara_helpers.rb</span>
-</span><span class='line'><span class="k">module</span> <span class="nn">CapybaraHelpers</span>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">waiting_for_completed_ajax</span><span class="p">(</span><span class="n">seconds</span> <span class="o">=</span> <span class="no">Capybara</span><span class="o">.</span><span class="n">default_wait_time</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">ajax_sent</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">evaluate_script</span><span class="p">(</span><span class="s2">&quot;_ajax_sent&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_i</span>
-</span><span class='line'>    <span class="k">yield</span>
-</span><span class='line'>    <span class="k">raise</span> <span class="s2">&quot;No Ajax request sent after action. Can&#39;t wait for completed Ajax.&quot;</span> <span class="k">if</span> <span class="n">ajax_sent</span> <span class="o">==</span> <span class="n">page</span><span class="o">.</span><span class="n">evaluate_script</span><span class="p">(</span><span class="s2">&quot;_ajax_sent&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_i</span>
-</span><span class='line'>    <span class="ss">Timeout</span><span class="p">:</span><span class="ss">:timeout</span><span class="p">(</span><span class="n">seconds</span><span class="p">)</span> <span class="k">do</span>
-</span><span class='line'>      <span class="k">until</span><span class="p">(</span> <span class="n">page</span><span class="o">.</span><span class="n">evaluate_script</span> <span class="s2">&quot;_ajax_sent == _ajax_completed&quot;</span> <span class="p">)</span> <span class="k">do</span>
-</span><span class='line'>        <span class="nb">sleep</span> <span class="mi">0</span><span class="o">.</span><span class="mi">1</span>
-</span><span class='line'>      <span class="k">end</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>  <span class="k">rescue</span> <span class="ss">Timeout</span><span class="p">:</span><span class="ss">:Error</span>
-</span><span class='line'>    <span class="k">raise</span> <span class="s2">&quot;Ajax request didn&#39;t complete in </span><span class="si">#{</span><span class="n">seconds</span><span class="si">}</span><span class="s2"> seconds (sent requests: </span><span class="si">#{</span><span class="n">page</span><span class="o">.</span><span class="n">evaluate_script</span><span class="p">(</span><span class="s1">&#39;_ajax_sent&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">, completed requests: </span><span class="si">#{</span><span class="n">page</span><span class="o">.</span><span class="n">evaluate_script</span><span class="p">(</span><span class="s1">&#39;_ajax_completed&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
 
 
-<p>This snippet defines a helper method that takes a block. The method checks that the action present on the block triggers an Ajax call and waits for that call to finish. You then include it in your testing framework of choice. For example in RSpec, configure it this way:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># spec/spec_helper.rb</span>
-</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;support/capybara_helpers&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="no">RSpec</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
-</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="no">CapybaraHelpers</span><span class="p">)</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
 
 
-<p>And then use it like this:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">visit</span> <span class="s1">&#39;/&#39;</span>
-</span><span class='line'><span class="n">waiting_for_completed_ajax</span> <span class="k">do</span>
-</span><span class='line'>  <span class="n">click_button</span> <span class="s1">&#39;generate_random_options&#39;</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'><span class="n">first_option</span> <span class="o">=</span> <span class="n">first</span><span class="p">(</span><span class="s1">&#39;#roulette option&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
-</span><span class='line'><span class="nb">select</span> <span class="n">first_option</span><span class="p">,</span> <span class="ss">from</span><span class="p">:</span> <span class="s1">&#39;roulette&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Bear in mind that if you have lots of background activity firing Ajax calls this method may not work as expected. This was designed for waiting for Ajax requests triggered by some action, and may not work reliably in other situations.</p>
-
-<p>The way that you include the needed javascript in your testing environment is up to you, as this depends heavily on your testing setup. In my case I have a special javascript file that gets included in all javascript bundles if the project is in &ldquo;testing mode&rdquo;.</p>
-
-<p>Also in testing mode, a lot of external services are turned off, or mocked out, like facebook, google analytics and adsense, and other metrics tools. This will increase the reliability of your tests, because you are removing an external source of entropy that you do not control and that can interfere with the outcome of your tests. As a bonus, they will run faster.</p>
-
-<p>As a final note, in testing mode I also include this snippet in all javascript bundles:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">jQuery</span><span class="p">)</span> <span class="p">{</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">fx</span><span class="p">.</span><span class="nx">off</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span> <span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This will turn off all jQuery animations and speed up your integration tests. More importantly, it will increase their reliability because stuff is not moving around while you&rsquo;re trying to click it. This is especially important if you&rsquo;re using <a href="https://github.com/jonleighton/poltergeist">Poltergeist</a> to drive <a href="http://phantomjs.org">PhantomJS</a> as it has an advanced click behaviour <a href="https://github.com/jonleighton/poltergeist#mouseeventfailed-errors">explained in the README</a>. Poltergeist asks the browser (PhantomJS) the coordinates of an element to click, and then tries to click on those coordinates. If you&rsquo;re using jQuery animations, the element may be moving around and the click will fail. If you turn off animations with <a href="http://api.jquery.com/jQuery.fx.off/">jQuery.fx.off</a> these problems will go away and you&rsquo;ll have snappier tests because you&rsquo;re not waiting for the animations to reach their final state.</p>
-
-<p>These tricks have increased the reliability and speed of my integration tests. I hope it helps yours too.</p>
-]]></content>
-  </entry>
   
-  <entry>
-    <title type="html"><![CDATA[Putting some twilight on octopress]]></title>
-    <link href="http://cabeca.github.io/blog/2013/06/09/putting-some-twilight-on-octopress/"/>
-    <updated>2013-06-09T18:13:00+01:00</updated>
-    <id>http://cabeca.github.io/blog/2013/06/09/putting-some-twilight-on-octopress</id>
-    <content type="html"><![CDATA[<p>So, this blog runs on <a href="http://octopress.org">Octopress</a> which is great, but the default solarized syntax highlighting is&hellip; how to put this gently&hellip; colorful in a non-pleasant way. This is how code looks with the default theme:</p>
-
-<p><img src="http://cabeca.github.io/images/octopress_solarized_syntax_highlighting.png" alt="Octopress Solarized Syntax Highlighting" /></p>
-
-<p>So I decided to change that to my prefered Twilight theme from Sublime Text 2:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Float</span>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">number_decimal_places</span>
-</span><span class='line'>    <span class="nb">self</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">length</span><span class="o">-</span><span class="mi">2</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">to_fraction</span>
-</span><span class='line'>    <span class="n">higher</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="nb">self</span><span class="o">.</span><span class="n">number_decimal_places</span>
-</span><span class='line'>    <span class="n">lower</span> <span class="o">=</span> <span class="nb">self</span><span class="o">*</span><span class="n">higher</span>
-</span><span class='line'>    <span class="n">gcden</span> <span class="o">=</span> <span class="n">greatest_common_divisor</span><span class="p">(</span><span class="n">higher</span><span class="p">,</span> <span class="n">lower</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">return</span> <span class="p">(</span><span class="n">lower</span><span class="o">/</span><span class="n">gcden</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">,</span> <span class="p">(</span><span class="n">higher</span><span class="o">/</span><span class="n">gcden</span><span class="p">)</span><span class="o">.</span><span class="n">round</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="kp">private</span>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">greatest_common_divisor</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-</span><span class='line'>     <span class="k">while</span> <span class="n">a</span><span class="o">%</span><span class="n">b</span> <span class="o">!=</span> <span class="mi">0</span>
-</span><span class='line'>       <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">round</span><span class="p">,(</span><span class="n">a</span><span class="o">%</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">round</span>
-</span><span class='line'>     <span class="k">end</span>
-</span><span class='line'>     <span class="k">return</span> <span class="n">b</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
 
 
-<p>Phew! Bland and pastel colors > Bright and screaming colors. Much better!</p>
-
-<p>There is a <a href="http://blog.alestanis.com/2013/02/04/octopress-and-the-twilight-color-scheme/">blog post from Alejandra Estanislao</a> on how to do this but it goes a little too far, replacing the syntax highlighting engine of octopress from Pygments to CodeRay. I didn&rsquo;t want to do that (Pygments is a fine syntax highlighter) so, I digged a little deeper and found this <a href="https://gist.github.com/dansimpson/803005">twilight_pigments.css gist by Dan Simpson</a>.</p>
-
-<p>With this in hand I&rsquo;ve set out to discover where to put it inside octopress. The pygments syntax highlighting css rules are buried deep inside <code>sass/partials/_syntax.scss</code> nested in a <code>.pre-code</code> class. You can put custom scss in <code>sass/custom/_styles.scss</code> as this file will be imported last, and will override other styles in the cascade.</p>
-
-<p>So I&rsquo;ve adapted the twilight pigmets css to scss, changed <code>.pre.code</code> to <code>.pre-code</code>, added <code>!important</code> everywhere, changed some colors using Sublime Text 2 as a reference and ended up with this:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-<span class='line-number'>66</span>
-<span class='line-number'>67</span>
-<span class='line-number'>68</span>
-<span class='line-number'>69</span>
-<span class='line-number'>70</span>
-<span class='line-number'>71</span>
-<span class='line-number'>72</span>
-<span class='line-number'>73</span>
-<span class='line-number'>74</span>
-<span class='line-number'>75</span>
-<span class='line-number'>76</span>
-</pre></td><td class='code'><pre><code class='sass'><span class='line'><span class="c1">// This File is imported last, and will override other styles in the cascade</span>
-</span><span class='line'><span class="c1">// Add styles here to make changes without digging in too much</span>
-</span><span class='line'>
-</span><span class='line'><span class="nc">.pre-code</span> <span class="err">{</span>
-</span><span class='line'>  <span class="na">font-family</span><span class="o">:</span> <span class="n">Consolas</span><span class="o">,</span> <span class="n">Monaco</span><span class="o">,</span><span class="s2">&quot;Lucida Console&quot;</span><span class="err">;</span>
-</span><span class='line'>  <span class="na">overflow</span><span class="o">:</span> <span class="no">scroll</span><span class="err">;</span>
-</span><span class='line'>  <span class="na">overflow-y</span><span class="o">:</span> <span class="no">hidden</span><span class="err">;</span>
-</span><span class='line'>  <span class="na">display</span><span class="o">:</span> <span class="no">block</span><span class="err">;</span>
-</span><span class='line'>  <span class="na">padding</span><span class="o">:</span> <span class="mf">.8</span><span class="kt">em</span><span class="err">;</span>
-</span><span class='line'>  <span class="na">overflow-x</span><span class="o">:</span> <span class="no">auto</span><span class="err">;</span>
-</span><span class='line'>  <span class="na">line-height</span><span class="o">:</span> <span class="mi">1</span><span class="mf">.45</span><span class="kt">em</span><span class="err">;</span>
-</span><span class='line'>  <span class="na">background</span><span class="o">:</span> <span class="mh">#181818</span> <span class="nv">!important</span><span class="err">;</span>
-</span><span class='line'>  <span class="na">color</span><span class="o">:</span> <span class="mh">#F8F8F8</span> <span class="nv">!important</span><span class="err">;</span>
-</span><span class='line'>  <span class="na">span</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#F8F8F8</span> <span class="nv">!important</span><span class="err">;</span> <span class="err">}</span>
-</span><span class='line'>  <span class="na">span</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">font-style</span><span class="o">:</span> <span class="no">normal</span> <span class="nv">!important</span><span class="err">;</span> <span class="no">font-weight</span><span class="o">:</span> <span class="no">normal</span> <span class="nv">!important</span><span class="err">;</span> <span class="err">}</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="na">.hll</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">background-color</span><span class="o">:</span> <span class="mh">#ffffcc</span> <span class="nv">!important</span> <span class="err">}</span>
-</span><span class='line'>  <span class="na">.c</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#5F5A60</span> <span class="nv">!important</span><span class="err">;</span> <span class="no">font-style</span><span class="o">:</span> <span class="no">italic</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Comment </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.err</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">border</span><span class="o">:</span><span class="mh">#B22518</span><span class="err">;</span> <span class="err">}</span> <span class="cm">/* Error </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.k</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#CDA869</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Keyword </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.cm</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#5F5A60</span> <span class="nv">!important</span><span class="err">;</span> <span class="no">font-style</span><span class="o">:</span> <span class="no">italic</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Comment.Multiline </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.cp</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#5F5A60</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Comment.Preproc </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.c1</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#5F5A60</span> <span class="nv">!important</span><span class="err">;</span> <span class="no">font-style</span><span class="o">:</span> <span class="no">italic</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Comment.Single </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.cs</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#5F5A60</span> <span class="nv">!important</span><span class="err">;</span> <span class="no">font-style</span><span class="o">:</span> <span class="no">italic</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Comment.Special </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.gd</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">background</span><span class="o">:</span> <span class="mh">#420E09</span> <span class="err">}</span> <span class="cm">/* Generic.Deleted </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.ge</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">font-style</span><span class="o">:</span> <span class="no">italic</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Generic.Emph </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.gr</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">background</span><span class="o">:</span> <span class="mh">#B22518</span> <span class="err">}</span> <span class="cm">/* Generic.Error </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.gh</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#000080</span> <span class="nv">!important</span><span class="err">;</span> <span class="no">font-weight</span><span class="o">:</span> <span class="no">bold</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Generic.Heading </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.gi</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">background</span><span class="o">:</span> <span class="mh">#253B22</span> <span class="err">}</span> <span class="cm">/* Generic.Inserted </span><span class="c">*/</span>
-</span><span class='line'>  <span class="nc">.go</span> <span class="err">{</span>  <span class="err">}</span> <span class="o">/*</span> <span class="nt">Generic</span><span class="nc">.Output</span> <span class="o">*/</span>
-</span><span class='line'>  <span class="na">.gp</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">font-weight</span><span class="o">:</span> <span class="no">bold</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Generic.Prompt </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.gs</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">font-weight</span><span class="o">:</span> <span class="no">bold</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Generic.Strong </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.gu</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#800080</span> <span class="nv">!important</span><span class="err">;</span> <span class="no">font-weight</span><span class="o">:</span> <span class="no">bold</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Generic.Subheading </span><span class="c">*/</span>
-</span><span class='line'>  <span class="nc">.gt</span> <span class="err">{</span>  <span class="err">}</span> <span class="o">/*</span> <span class="nt">Generic</span><span class="nc">.Traceback</span> <span class="o">*/</span>
-</span><span class='line'>  <span class="nc">.kc</span> <span class="err">{</span>  <span class="err">}</span> <span class="o">/*</span> <span class="nt">Keyword</span><span class="nc">.Constant</span> <span class="o">*/</span>
-</span><span class='line'>  <span class="na">.kd</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#e9df8f</span> <span class="nv">!important</span><span class="err">;</span>  <span class="err">}</span> <span class="cm">/* Keyword.Declaration </span><span class="c">*/</span>
-</span><span class='line'>  <span class="nc">.kn</span> <span class="err">{</span>  <span class="err">}</span> <span class="o">/*</span> <span class="nt">Keyword</span><span class="nc">.Namespace</span> <span class="o">*/</span>
-</span><span class='line'>  <span class="na">.kp</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#CF6A4C</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Keyword.Pseudo </span><span class="c">*/</span>
-</span><span class='line'>  <span class="nc">.kr</span> <span class="err">{</span>  <span class="err">}</span> <span class="o">/*</span> <span class="nt">Keyword</span><span class="nc">.Reserved</span> <span class="o">*/</span>
-</span><span class='line'>  <span class="nc">.kt</span> <span class="err">{</span>  <span class="err">}</span> <span class="o">/*</span> <span class="nt">Keyword</span><span class="nc">.Type</span> <span class="o">*/</span>
-</span><span class='line'>  <span class="nc">.m</span> <span class="err">{</span> <span class="err">}</span> <span class="o">/*</span> <span class="nt">Literal</span><span class="nc">.Number</span> <span class="o">*/</span>
-</span><span class='line'>  <span class="na">.s</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#8F9D6A</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Literal.String </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.na</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#F9EE98</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Name.Attribute </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.nb</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#CDA869</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Name.Builtin </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.nc</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#9B703F</span> <span class="nv">!important</span><span class="err">;</span> <span class="no">font-weight</span><span class="o">:</span> <span class="no">bold</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Name.Class </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.no</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#7587A6</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Name.Constant </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.nd</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#7587A6</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Name.Decorator </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.ni</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#CF6A4C</span> <span class="nv">!important</span><span class="err">;</span> <span class="no">font-weight</span><span class="o">:</span> <span class="no">bold</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Name.Entity </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.nf</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#9B703F</span> <span class="nv">!important</span><span class="err">;</span> <span class="no">font-weight</span><span class="o">:</span> <span class="no">bold</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Name.Function </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.nn</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#9B703F</span> <span class="nv">!important</span><span class="err">;</span> <span class="no">font-weight</span><span class="o">:</span> <span class="no">bold</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Name.Namespace </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.nt</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#CDA869</span> <span class="nv">!important</span><span class="err">;</span> <span class="no">font-weight</span><span class="o">:</span> <span class="no">bold</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Name.Tag </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.nv</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#7587A6</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Name.Variable </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.o</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#CDA869</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Operator </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.ow</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#AA22FF</span> <span class="nv">!important</span><span class="err">;</span> <span class="no">font-weight</span><span class="o">:</span> <span class="no">bold</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Operator.Word </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.w</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#141414</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Text.Whitespace </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.mf</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#CF6A4C</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Literal.Number.Float </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.mh</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#CF6A4C</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Literal.Number.Hex </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.mi</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#CF6A4C</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Literal.Number.Integer </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.mo</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#CF6A4C</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Literal.Number.Oct </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.sb</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#8F9D6A</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Literal.String.Backtick </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.sc</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#8F9D6A</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Literal.String.Char </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.sd</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#8F9D6A</span> <span class="nv">!important</span><span class="err">;</span> <span class="no">font-style</span><span class="o">:</span> <span class="no">italic</span> <span class="nv">!important</span><span class="err">;</span> <span class="err">}</span> <span class="cm">/* Literal.String.Doc </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.s2</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#8F9D6A</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Literal.String.Double </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.se</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#F9EE98</span> <span class="nv">!important</span><span class="err">;</span> <span class="no">font-weight</span><span class="o">:</span> <span class="no">bold</span> <span class="nv">!important</span><span class="err">;</span> <span class="err">}</span> <span class="cm">/* Literal.String.Escape </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.sh</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#8F9D6A</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Literal.String.Heredoc </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.si</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#DAEFA3</span> <span class="nv">!important</span><span class="err">;</span> <span class="no">font-weight</span><span class="o">:</span> <span class="no">bold</span> <span class="nv">!important</span><span class="err">;</span> <span class="err">}</span> <span class="cm">/* Literal.String.Interpol </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.sx</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#8F9D6A</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Literal.String.Other </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.sr</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#E9C062</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Literal.String.Regex </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.s1</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#8F9D6A</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Literal.String.Single </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.ss</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#CF6A4C</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Literal.String.Symbol </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.bp</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#00aaaa</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Name.Builtin.Pseudo </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.vc</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#7587A6</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Name.Variable.Class </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.vg</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#7587A6</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Name.Variable.Global </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.vi</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#7587A6</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Name.Variable.Instance </span><span class="c">*/</span>
-</span><span class='line'>  <span class="na">.il</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">color</span><span class="o">:</span> <span class="mh">#009999</span> <span class="nv">!important</span> <span class="err">}</span> <span class="cm">/* Literal.Number.Integer.Long </span><span class="c">*/</span>
-</span><span class='line'><span class="err">}</span>
-</span></code></pre></td></tr></table></div></figure>
+<time datetime="2013-07-21T14:08:00+01:00" pubdate data-updated="true">Jul 21<span>st</span>, 2013</time>
+      
 
 
-<p>I had to remove the whole <code>.pre-code</code> block inside <code>sass/partials/_syntax.scss</code> because some styles kept bleeding through the css cascade and I didn&rsquo;t want to waste more time chasing after them. You can see
-<a href="https://github.com/cabeca/cabeca.github.io/commit/7fc9690ace63e9373bce8010f8a68016fce549dc">the complete commit in GitHub</a>.</p>
-
-<p>The syntax highlighting is not exactly the same as Sublime&rsquo;s but is pretty close. And there you have it, beautiful code in Octopress.</p>
-]]></content>
-  </entry>
+    </p>
+    
+      <div class="sharing">
   
-  <entry>
-    <title type="html"><![CDATA[Firefox: same origin policy woes with private adress ranges]]></title>
-    <link href="http://cabeca.github.io/blog/2013/06/09/firefox-same-origin-policy-woes-with-private-adress-ranges/"/>
-    <updated>2013-06-09T13:48:00+01:00</updated>
-    <id>http://cabeca.github.io/blog/2013/06/09/firefox-same-origin-policy-woes-with-private-adress-ranges</id>
-    <content type="html"><![CDATA[<p>Suppose you have an html page and you want to embed an <a href="http://css-tricks.com/using-svg/">SVG</a> in it for later manipulation. One of the possible ways to do it is using an <code>object</code> tag like this:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;the_logo&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;object</span> <span class="na">type=</span><span class="s">&quot;image/svg+xml&quot;</span> <span class="na">data=</span><span class="s">&quot;images/awesome_logo.svg&quot;</span> <span class="na">id=</span><span class="s">&quot;awesome_logo&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>    You&#39;re missing out on an Awesome logo with that old browser!
-</span><span class='line'>  <span class="nt">&lt;/object&gt;</span>
-</span><span class='line'><span class="nt">&lt;/div&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>And using some javascript to manipulate, say, a node&rsquo;s opacity:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">fade_out_lettering</span><span class="p">(){</span>
-</span><span class='line'>  <span class="c1">// Get the svg content document embedded in out document </span>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">svg</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;awesome_logo&#39;</span><span class="p">).</span><span class="nx">contentDocument</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1">// use jQuery to select an SVG element, using svg as the search context</span>
-</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#lettering&#39;</span><span class="p">,</span><span class="nx">svg</span><span class="p">).</span><span class="nx">animate</span><span class="p">({</span><span class="nx">opacity</span><span class="o">:</span> <span class="mi">0</span><span class="p">});</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Now, suppose that you use private addresses in the context of your development environment. You access your development (virtual) machine using some ip address in Chrome:</p>
-
-<p><code>http://10.0.0.10:3000/</code></p>
-
-<p>And you see your glorious svg logo lose it&rsquo;s letters in a nice fade. Check with Safari, and the same beautiful experience. Check with firefox, aaaaaand&hellip; nothing!
-Open up the inspector and you&rsquo;ll see something like this (or similar):</p>
-
-<p><img src="http://cabeca.github.io/images/firefox_inspector.png" alt="Firefox" /></p>
-
-<p>What the hell? Permission denied in the context of access to embedded documents (iframes, svgs&hellip;) usually means violations of the <a href="http://en.wikipedia.org/wiki/Same_origin_policy">same origin policy</a>, but in this case the contents are all local, and share the same protocol, host and port number. Besides, it works on all other cool browsers! What&rsquo;s going on?</p>
-
-<p>Well, it seems firefox has some issues checking same origin policy with private adresses (or is it any ip address?). Just to validate this theory, use an ip-to-name tool like <a href="http://xip.io">xip.io</a> to check the page again. You access your development maching using a name instead of an ip address:</p>
-
-<p><code>10.0.0.10.xip.io:3000/</code></p>
-
-<p>And <em>voilà</em>! The letters also fade in firefox (version 21 in my case)! So now you can deploy your shiny logo confident that it will work when your users view it served from production machines. I&rsquo;m assuming you do use a domain name for your site&hellip;</p>
-
-<p>This firefox idiosyncrasy applies to embedded svgs, but also to iframes, and probably to any other object you can embed in your page.</p>
-
-<p>Hat tip to <a href="http://twitter.com/luismreis">@luismreis</a> for the xip.io trick. Thanks!</p>
-]]></content>
-  </entry>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://cabeca.github.io/blog/2013/07/21/using-sass-to-streamline-a-css-ribbon/" data-via="miguelcabeca" data-counturl="http://cabeca.github.io/blog/2013/07/21/using-sass-to-streamline-a-css-ribbon/" >Tweet</a>
   
-</feed>
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/06/16/waiting-for-completed-ajax-in-capybara-and-other-tricks/" title="Previous Post: Waiting for completed Ajax in Capybara and other tricks.">&laquo; Waiting for completed Ajax in Capybara and other tricks.</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me</h1>
+  <p>
+    <strong>Miguel Cabeça</strong> 
+    (<a href="http://twitter.com/miguelcabeca">@miguelcabeca</a>)
+  </p>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/07/21/using-sass-to-streamline-a-css-ribbon/">Using Sass to Streamline a Css Ribbon.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/16/waiting-for-completed-ajax-in-capybara-and-other-tricks/">Waiting for Completed Ajax in Capybara and Other Tricks.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/09/putting-some-twilight-on-octopress/">Putting Some Twilight on Octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/09/firefox-same-origin-policy-woes-with-private-adress-ranges/">Firefox: Same Origin Policy Woes With Private Adress Ranges</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/cabeca">@cabeca</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'cabeca',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Miguel Cabeça -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

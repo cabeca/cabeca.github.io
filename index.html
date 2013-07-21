@@ -9,7 +9,7 @@
   <meta name="author" content="Miguel Cabeça">
 
   
-  <meta name="description" content="Capybara 2.1 does a pretty good job waiting for elements to appear or disapear from the page you&rsquo;re testing. Every Capybara finder method ( &hellip;">
+  <meta name="description" content="For a simple listing page I was working on, I needed some sort of ribbon to depict a status for that listing item. Having seen lots of ribbons on &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -63,6 +63,573 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/07/21/using-sass-to-streamline-a-css-ribbon/">Using Sass to Streamline a Css Ribbon.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-21T14:08:00+01:00" pubdate data-updated="true">Jul 21<span>st</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>For a simple listing page I was working on, I needed some sort of ribbon to depict a status for that listing item. Having seen lots of ribbons on various web pages I went shopping for some pre-made nice looking ribbons. I was using <a href="http://sass-lang.com">Sass</a> as a css preprocessor and <a href="https://github.com/thomas-mcdonald/bootstrap-sass">sass-bootstrap</a> for rapid prototyping so sure enough, the first google result for <code>sass bootstrap ribbon</code> yielded a <a href="https://github.com/twitter/bootstrap/issues/5550">rejected bootstrap issue</a> with a working <a href="http://jsfiddle.net/UBfCE/2/">jsfiddle</a> for a nice green ribbon.</p>
+
+<p>This is the css on that fiddle:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.ribbon-wrapper</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">width</span><span class="o">:</span> <span class="m">85px</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">height</span><span class="o">:</span> <span class="m">88px</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">overflow</span><span class="o">:</span> <span class="k">hidden</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">position</span><span class="o">:</span> <span class="k">absolute</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">top</span><span class="o">:</span> <span class="m">-3px</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">right</span><span class="o">:</span> <span class="m">-3px</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">z-index</span><span class="o">:</span> <span class="m">9999</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.ribbon</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">font</span><span class="o">:</span> <span class="k">bold</span> <span class="m">15px</span> <span class="n">Sans</span><span class="o">-</span><span class="n">Serif</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">color</span><span class="o">:</span> <span class="m">#333</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">text-align</span><span class="o">:</span> <span class="k">center</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">text-shadow</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span><span class="m">255</span><span class="o">,</span><span class="m">255</span><span class="o">,</span><span class="m">0</span><span class="o">.</span><span class="m">5</span><span class="p">)</span> <span class="m">0px</span> <span class="m">1px</span> <span class="m">0px</span><span class="p">;</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">transform</span><span class="o">:</span> <span class="n">rotate</span><span class="p">(</span><span class="m">45</span><span class="n">deg</span><span class="p">);</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">transform</span><span class="o">:</span>    <span class="n">rotate</span><span class="p">(</span><span class="m">45</span><span class="n">deg</span><span class="p">);</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">ms</span><span class="o">-</span><span class="n">transform</span><span class="o">:</span>     <span class="n">rotate</span><span class="p">(</span><span class="m">45</span><span class="n">deg</span><span class="p">);</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">o</span><span class="o">-</span><span class="n">transform</span><span class="o">:</span>      <span class="n">rotate</span><span class="p">(</span><span class="m">45</span><span class="n">deg</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">position</span><span class="o">:</span> <span class="k">relative</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">padding</span><span class="o">:</span> <span class="m">7px</span> <span class="m">0</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">left</span><span class="o">:</span> <span class="m">-5px</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">top</span><span class="o">:</span> <span class="m">15px</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">width</span><span class="o">:</span> <span class="m">120px</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">background-color</span><span class="o">:</span> <span class="m">#BFDC7A</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">background-image</span><span class="o">:</span> <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">gradient</span><span class="p">(</span><span class="n">linear</span><span class="o">,</span> <span class="k">left</span> <span class="k">top</span><span class="o">,</span> <span class="k">left</span> <span class="k">bottom</span><span class="o">,</span> <span class="n">from</span><span class="p">(</span><span class="m">#BFDC7A</span><span class="p">)</span><span class="o">,</span> <span class="n">to</span><span class="p">(</span><span class="m">#8EBF45</span><span class="p">));</span>
+</span><span class='line'>  <span class="k">background-image</span><span class="o">:</span> <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">linear</span><span class="o">-</span><span class="n">gradient</span><span class="p">(</span><span class="k">top</span><span class="o">,</span> <span class="m">#BFDC7A</span><span class="o">,</span> <span class="m">#8EBF45</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">background-image</span><span class="o">:</span>    <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">linear</span><span class="o">-</span><span class="n">gradient</span><span class="p">(</span><span class="k">top</span><span class="o">,</span> <span class="m">#BFDC7A</span><span class="o">,</span> <span class="m">#8EBF45</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">background-image</span><span class="o">:</span>     <span class="o">-</span><span class="n">ms</span><span class="o">-</span><span class="n">linear</span><span class="o">-</span><span class="n">gradient</span><span class="p">(</span><span class="k">top</span><span class="o">,</span> <span class="m">#BFDC7A</span><span class="o">,</span> <span class="m">#8EBF45</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">background-image</span><span class="o">:</span>      <span class="o">-</span><span class="n">o</span><span class="o">-</span><span class="n">linear</span><span class="o">-</span><span class="n">gradient</span><span class="p">(</span><span class="k">top</span><span class="o">,</span> <span class="m">#BFDC7A</span><span class="o">,</span> <span class="m">#8EBF45</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">color</span><span class="o">:</span> <span class="m">#6a6340</span><span class="p">;</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span> <span class="m">0px</span> <span class="m">0px</span> <span class="m">3px</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">.</span><span class="m">3</span><span class="p">);</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span>    <span class="m">0px</span> <span class="m">0px</span> <span class="m">3px</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">.</span><span class="m">3</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span>         <span class="m">0px</span> <span class="m">0px</span> <span class="m">3px</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">.</span><span class="m">3</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.ribbon</span><span class="nd">:before</span><span class="o">,</span> <span class="nc">.ribbon</span><span class="nd">:after</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">content</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">border-top</span><span class="o">:</span>   <span class="m">3px</span> <span class="k">solid</span> <span class="m">#6e8900</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">border-left</span><span class="o">:</span>  <span class="m">3px</span> <span class="k">solid</span> <span class="k">transparent</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">border-right</span><span class="o">:</span> <span class="m">3px</span> <span class="k">solid</span> <span class="k">transparent</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">position</span><span class="o">:</span><span class="k">absolute</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">bottom</span><span class="o">:</span> <span class="m">-3px</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.ribbon</span><span class="nd">:before</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">left</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nc">.ribbon</span><span class="nd">:after</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">right</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And it produces a nice looking ribbon stuck to the top right of the page:</p>
+
+<p><img src="/images/ribbon1.png" alt="Original ribbon" /></p>
+
+<p>With some minor modifications I adapted the css to apply the ribbon to every item on the listing instead of the whole page. Also, I needed several colored ribbons representing different listing states. The result was pretty spiffy:</p>
+
+<p><img src="/images/ribbon2.png" alt="Active ribbon" />
+<img src="/images/ribbon3.png" alt="Deleted ribbon" />
+<img src="/images/ribbon4.png" alt="Inactive ribbon" /></p>
+
+<p>But the css was growing to be a huge mess of repeated and inflexible code. For each new color needed, I had to find the right gradient and text colors, and repeat some css in an ever growing exercise of copy/paste. This was becomming pretty ugly, pretty fast:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.ribbon-wrapper</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">width</span><span class="o">:</span> <span class="m">106px</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">height</span><span class="o">:</span> <span class="m">93px</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">overflow</span><span class="o">:</span> <span class="k">hidden</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">position</span><span class="o">:</span> <span class="k">absolute</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">z-index</span><span class="o">:</span> <span class="m">9999</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.ribbon</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">font</span><span class="o">:</span> <span class="k">bold</span> <span class="m">15px</span> <span class="n">Sans</span><span class="o">-</span><span class="n">Serif</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">color</span><span class="o">:</span> <span class="m">#333</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">text-align</span><span class="o">:</span> <span class="k">center</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">text-shadow</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span><span class="m">255</span><span class="o">,</span><span class="m">255</span><span class="o">,</span><span class="m">0</span><span class="o">.</span><span class="m">5</span><span class="p">)</span> <span class="m">0px</span> <span class="m">1px</span> <span class="m">0px</span><span class="p">;</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">transform</span><span class="o">:</span> <span class="n">rotate</span><span class="p">(</span><span class="m">-45</span><span class="n">deg</span><span class="p">);</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">transform</span><span class="o">:</span>    <span class="n">rotate</span><span class="p">(</span><span class="m">-45</span><span class="n">deg</span><span class="p">);</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">ms</span><span class="o">-</span><span class="n">transform</span><span class="o">:</span>     <span class="n">rotate</span><span class="p">(</span><span class="m">-45</span><span class="n">deg</span><span class="p">);</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">o</span><span class="o">-</span><span class="n">transform</span><span class="o">:</span>      <span class="n">rotate</span><span class="p">(</span><span class="m">-45</span><span class="n">deg</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">position</span><span class="o">:</span> <span class="k">relative</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">padding</span><span class="o">:</span> <span class="m">7px</span> <span class="m">0</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">left</span><span class="o">:</span> <span class="m">-28px</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">top</span><span class="o">:</span> <span class="m">17px</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">width</span><span class="o">:</span> <span class="m">120px</span><span class="p">;</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span> <span class="m">0px</span> <span class="m">0px</span> <span class="m">3px</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">.</span><span class="m">3</span><span class="p">);</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span>    <span class="m">0px</span> <span class="m">0px</span> <span class="m">3px</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">.</span><span class="m">3</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span>         <span class="m">0px</span> <span class="m">0px</span> <span class="m">3px</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">.</span><span class="m">3</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.active</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">color</span><span class="o">:</span> <span class="n">darken</span><span class="p">(</span><span class="m">#8EBF45</span><span class="o">,</span> <span class="m">30</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">background-color</span><span class="o">:</span> <span class="m">#BFDC7A</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">background-image</span><span class="o">:</span> <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">gradient</span><span class="p">(</span><span class="n">linear</span><span class="o">,</span> <span class="k">left</span> <span class="k">top</span><span class="o">,</span> <span class="k">left</span> <span class="k">bottom</span><span class="o">,</span> <span class="n">from</span><span class="p">(</span><span class="m">#BFDC7A</span><span class="p">)</span><span class="o">,</span> <span class="n">to</span><span class="p">(</span><span class="m">#8EBF45</span><span class="p">));</span>
+</span><span class='line'>  <span class="k">background-image</span><span class="o">:</span> <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">linear</span><span class="o">-</span><span class="n">gradient</span><span class="p">(</span><span class="k">top</span><span class="o">,</span> <span class="m">#BFDC7A</span><span class="o">,</span> <span class="m">#8EBF45</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">background-image</span><span class="o">:</span>    <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">linear</span><span class="o">-</span><span class="n">gradient</span><span class="p">(</span><span class="k">top</span><span class="o">,</span> <span class="m">#BFDC7A</span><span class="o">,</span> <span class="m">#8EBF45</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">background-image</span><span class="o">:</span>     <span class="o">-</span><span class="n">ms</span><span class="o">-</span><span class="n">linear</span><span class="o">-</span><span class="n">gradient</span><span class="p">(</span><span class="k">top</span><span class="o">,</span> <span class="m">#BFDC7A</span><span class="o">,</span> <span class="m">#8EBF45</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">background-image</span><span class="o">:</span>      <span class="o">-</span><span class="n">o</span><span class="o">-</span><span class="n">linear</span><span class="o">-</span><span class="n">gradient</span><span class="p">(</span><span class="k">top</span><span class="o">,</span> <span class="m">#BFDC7A</span><span class="o">,</span> <span class="m">#8EBF45</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nc">.refused</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">color</span><span class="o">:</span> <span class="n">darken</span><span class="p">(</span><span class="m">#BD362F</span><span class="o">,</span> <span class="m">30</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">background-color</span><span class="o">:</span> <span class="m">#EE5F5B</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">background-image</span><span class="o">:</span> <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">gradient</span><span class="p">(</span><span class="n">linear</span><span class="o">,</span> <span class="k">left</span> <span class="k">top</span><span class="o">,</span> <span class="k">left</span> <span class="k">bottom</span><span class="o">,</span> <span class="n">from</span><span class="p">(</span><span class="m">#EE5F5B</span><span class="p">)</span><span class="o">,</span> <span class="n">to</span><span class="p">(</span><span class="m">#BD362F</span><span class="p">));</span>
+</span><span class='line'>  <span class="k">background-image</span><span class="o">:</span> <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">linear</span><span class="o">-</span><span class="n">gradient</span><span class="p">(</span><span class="k">top</span><span class="o">,</span> <span class="m">#EE5F5B</span><span class="o">,</span> <span class="m">#BD362F</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">background-image</span><span class="o">:</span>    <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">linear</span><span class="o">-</span><span class="n">gradient</span><span class="p">(</span><span class="k">top</span><span class="o">,</span> <span class="m">#EE5F5B</span><span class="o">,</span> <span class="m">#BD362F</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">background-image</span><span class="o">:</span>     <span class="o">-</span><span class="n">ms</span><span class="o">-</span><span class="n">linear</span><span class="o">-</span><span class="n">gradient</span><span class="p">(</span><span class="k">top</span><span class="o">,</span> <span class="m">#EE5F5B</span><span class="o">,</span> <span class="m">#BD362F</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">background-image</span><span class="o">:</span>      <span class="o">-</span><span class="n">o</span><span class="o">-</span><span class="n">linear</span><span class="o">-</span><span class="n">gradient</span><span class="p">(</span><span class="k">top</span><span class="o">,</span> <span class="m">#EE5F5B</span><span class="o">,</span> <span class="m">#BD362F</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nc">.inactive</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">color</span><span class="o">:</span> <span class="n">darken</span><span class="p">(</span><span class="m">#E6E6E6</span><span class="o">,</span> <span class="m">30</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">background-color</span><span class="o">:</span> <span class="m">#FFFFFF</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">background-image</span><span class="o">:</span> <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">gradient</span><span class="p">(</span><span class="n">linear</span><span class="o">,</span> <span class="k">left</span> <span class="k">top</span><span class="o">,</span> <span class="k">left</span> <span class="k">bottom</span><span class="o">,</span> <span class="n">from</span><span class="p">(</span><span class="m">#FFFFFF</span><span class="p">)</span><span class="o">,</span> <span class="n">to</span><span class="p">(</span><span class="m">#E6E6E6</span><span class="p">));</span>
+</span><span class='line'>  <span class="k">background-image</span><span class="o">:</span> <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">linear</span><span class="o">-</span><span class="n">gradient</span><span class="p">(</span><span class="k">top</span><span class="o">,</span> <span class="m">#FFFFFF</span><span class="o">,</span> <span class="m">#E6E6E6</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">background-image</span><span class="o">:</span>    <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">linear</span><span class="o">-</span><span class="n">gradient</span><span class="p">(</span><span class="k">top</span><span class="o">,</span> <span class="m">#FFFFFF</span><span class="o">,</span> <span class="m">#E6E6E6</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">background-image</span><span class="o">:</span>     <span class="o">-</span><span class="n">ms</span><span class="o">-</span><span class="n">linear</span><span class="o">-</span><span class="n">gradient</span><span class="p">(</span><span class="k">top</span><span class="o">,</span> <span class="m">#FFFFFF</span><span class="o">,</span> <span class="m">#E6E6E6</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">background-image</span><span class="o">:</span>      <span class="o">-</span><span class="n">o</span><span class="o">-</span><span class="n">linear</span><span class="o">-</span><span class="n">gradient</span><span class="p">(</span><span class="k">top</span><span class="o">,</span> <span class="m">#FFFFFF</span><span class="o">,</span> <span class="m">#E6E6E6</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.ribbon</span><span class="nd">:before</span><span class="o">,</span> <span class="nc">.ribbon</span><span class="nd">:after</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">content</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">border-top</span><span class="o">:</span>   <span class="m">3px</span> <span class="k">solid</span> <span class="m">#6e8900</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">border-left</span><span class="o">:</span>  <span class="m">3px</span> <span class="k">solid</span> <span class="k">transparent</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">border-right</span><span class="o">:</span> <span class="m">3px</span> <span class="k">solid</span> <span class="k">transparent</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">position</span><span class="o">:</span><span class="k">absolute</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">bottom</span><span class="o">:</span> <span class="m">-3px</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.ribbon</span><span class="nd">:before</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">left</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nc">.ribbon</span><span class="nd">:after</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">right</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Sass to the rescue</h4>
+
+<p>Let&rsquo;s refactor this code using the some nice <a href="http://sass-lang.com">Sass</a> features and some ready-made mixins provided by sass-bootstrap.</p>
+
+<h4>Removing vendor prefixes</h4>
+
+<p>The low hanging fruit is the vendor prefixes that we can reduce by using some sass-bootstrap mixins. You can get a list of bootstrap provided mixins in <a href="https://github.com/thomas-mcdonald/bootstrap-sass/blob/master/vendor/assets/stylesheets/bootstrap/_mixins.scss">the _mixins.scss file</a>. Mixins are like modules of code that can be included in other rules. They can even take arguments to further customize the included code. Take for example the sass-bootstrap <code>rotate</code> mixin:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="k">@mixin</span><span class="nf"> rotate</span><span class="p">(</span><span class="nv">$degrees</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">-webkit-transform</span><span class="o">:</span> <span class="nf">rotate</span><span class="p">(</span><span class="nv">$degrees</span><span class="p">);</span>
+</span><span class='line'>     <span class="na">-moz-transform</span><span class="o">:</span> <span class="nf">rotate</span><span class="p">(</span><span class="nv">$degrees</span><span class="p">);</span>
+</span><span class='line'>      <span class="na">-ms-transform</span><span class="o">:</span> <span class="nf">rotate</span><span class="p">(</span><span class="nv">$degrees</span><span class="p">);</span>
+</span><span class='line'>       <span class="na">-o-transform</span><span class="o">:</span> <span class="nf">rotate</span><span class="p">(</span><span class="nv">$degrees</span><span class="p">);</span>
+</span><span class='line'>          <span class="na">transform</span><span class="o">:</span> <span class="nf">rotate</span><span class="p">(</span><span class="nv">$degrees</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This scss syntax defines a mixin <code>rotate</code> that takes the variable <code>$degrees</code> as an argument . When you include this mixin in another rule like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nc">.diagonal</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">color</span><span class="o">:</span> <span class="nb">white</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">@include</span><span class="nd"> rotate</span><span class="p">(</span><span class="mi">-45</span><span class="kt">deg</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>the mixin gets expanded (mixed in) in that rule:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.diagonal</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">color</span><span class="o">:</span> <span class="nb">white</span><span class="p">;</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">transform</span><span class="o">:</span> <span class="n">rotate</span><span class="p">(</span><span class="m">-45</span><span class="n">deg</span><span class="p">);</span>
+</span><span class='line'>     <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">transform</span><span class="o">:</span> <span class="n">rotate</span><span class="p">(</span><span class="m">-45</span><span class="n">deg</span><span class="p">);</span>
+</span><span class='line'>      <span class="o">-</span><span class="n">ms</span><span class="o">-</span><span class="n">transform</span><span class="o">:</span> <span class="n">rotate</span><span class="p">(</span><span class="m">-45</span><span class="n">deg</span><span class="p">);</span>
+</span><span class='line'>       <span class="o">-</span><span class="n">o</span><span class="o">-</span><span class="n">transform</span><span class="o">:</span> <span class="n">rotate</span><span class="p">(</span><span class="m">-45</span><span class="n">deg</span><span class="p">);</span>
+</span><span class='line'>          <span class="n">transform</span><span class="o">:</span> <span class="n">rotate</span><span class="p">(</span><span class="m">-45</span><span class="n">deg</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So using the available sass-bootstrap mixins, these rather verbose rules</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'>  <span class="nt">-webkit-transform</span><span class="o">:</span> <span class="nt">rotate</span><span class="o">(</span><span class="nt">-45deg</span><span class="o">);</span>
+</span><span class='line'>  <span class="nt">-moz-transform</span><span class="o">:</span>    <span class="nt">rotate</span><span class="o">(</span><span class="nt">-45deg</span><span class="o">);</span>
+</span><span class='line'>  <span class="nt">-ms-transform</span><span class="o">:</span>     <span class="nt">rotate</span><span class="o">(</span><span class="nt">-45deg</span><span class="o">);</span>
+</span><span class='line'>  <span class="nt">-o-transform</span><span class="o">:</span>      <span class="nt">rotate</span><span class="o">(</span><span class="nt">-45deg</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nt">-webkit-box-shadow</span><span class="o">:</span> <span class="nt">0px</span> <span class="nt">0px</span> <span class="nt">3px</span> <span class="nt">rgba</span><span class="o">(</span><span class="nt">0</span><span class="o">,</span><span class="nt">0</span><span class="o">,</span><span class="nt">0</span><span class="o">,</span><span class="nt">0</span><span class="nc">.3</span><span class="o">);</span>
+</span><span class='line'>  <span class="nt">-moz-box-shadow</span><span class="o">:</span>    <span class="nt">0px</span> <span class="nt">0px</span> <span class="nt">3px</span> <span class="nt">rgba</span><span class="o">(</span><span class="nt">0</span><span class="o">,</span><span class="nt">0</span><span class="o">,</span><span class="nt">0</span><span class="o">,</span><span class="nt">0</span><span class="nc">.3</span><span class="o">);</span>
+</span><span class='line'>  <span class="nt">box-shadow</span><span class="o">:</span>         <span class="nt">0px</span> <span class="nt">0px</span> <span class="nt">3px</span> <span class="nt">rgba</span><span class="o">(</span><span class="nt">0</span><span class="o">,</span><span class="nt">0</span><span class="o">,</span><span class="nt">0</span><span class="o">,</span><span class="nt">0</span><span class="nc">.3</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nt">background-image</span><span class="o">:</span> <span class="nt">-webkit-gradient</span><span class="o">(</span><span class="nt">linear</span><span class="o">,</span> <span class="nt">left</span> <span class="nt">top</span><span class="o">,</span> <span class="nt">left</span> <span class="nt">bottom</span><span class="o">,</span> <span class="nt">from</span><span class="o">(</span><span class="nf">#FFFFFF</span><span class="o">),</span> <span class="nt">to</span><span class="o">(</span><span class="nf">#E6E6E6</span><span class="o">));</span>
+</span><span class='line'>  <span class="nt">background-image</span><span class="o">:</span> <span class="nt">-webkit-linear-gradient</span><span class="o">(</span><span class="nt">top</span><span class="o">,</span> <span class="nf">#FFFFFF</span><span class="o">,</span> <span class="nf">#E6E6E6</span><span class="o">);</span>
+</span><span class='line'>  <span class="nt">background-image</span><span class="o">:</span>    <span class="nt">-moz-linear-gradient</span><span class="o">(</span><span class="nt">top</span><span class="o">,</span> <span class="nf">#FFFFFF</span><span class="o">,</span> <span class="nf">#E6E6E6</span><span class="o">);</span>
+</span><span class='line'>  <span class="nt">background-image</span><span class="o">:</span>     <span class="nt">-ms-linear-gradient</span><span class="o">(</span><span class="nt">top</span><span class="o">,</span> <span class="nf">#FFFFFF</span><span class="o">,</span> <span class="nf">#E6E6E6</span><span class="o">);</span>
+</span><span class='line'>  <span class="nt">background-image</span><span class="o">:</span>      <span class="nt">-o-linear-gradient</span><span class="o">(</span><span class="nt">top</span><span class="o">,</span> <span class="nf">#FFFFFF</span><span class="o">,</span> <span class="nf">#E6E6E6</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>can be replaced by these that will generate the same output</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'>  <span class="k">@include</span><span class="nd"> rotate</span><span class="p">(</span><span class="mi">-45</span><span class="kt">deg</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">@include</span><span class="nd"> box-shadow</span><span class="p">(</span><span class="mi">0</span><span class="kt">px</span> <span class="mi">0</span><span class="kt">px</span> <span class="mi">3</span><span class="kt">px</span> <span class="nf">rgba</span><span class="p">(</span><span class="mi">0</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="mi">0</span><span class="mf">.3</span><span class="p">));</span>
+</span><span class='line'>  <span class="k">@include</span><span class="nd"> gradient-vertical</span><span class="p">(</span><span class="mh">#FFFFFF</span><span class="o">,</span> <span class="mh">#E6E6E6</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Creating a mixin for the ribbon color</h4>
+
+<p>One annoyance I faced when adding other ribbon colors for different status, was that I needed to pick three colors to define the new ribbon: a base color, a lighter color for the gradient and a darker color for the text and ribbon folds. Sass provides some functions to do color math, like <code>lighten</code> and <code>darken</code> that we could use to avoid having to specify three different colors.
+So I created a mixin that receives a base color, calculates both a lighter and darker versions of that color and assigns the resulting colors to variables that are used in the relevant places. Also used the <code>&amp;</code> operator to reference the parent selector of the rule this mixin will be included in.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'>  <span class="k">@mixin</span><span class="nf"> ribbon-color</span><span class="p">(</span><span class="nv">$ribbon_base_color</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nv">$ribbon_darker_color</span><span class="o">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$ribbon_base_color</span><span class="o">,</span> <span class="mi">30</span><span class="p">);</span>
+</span><span class='line'>    <span class="nv">$ribbon_lighter_color</span><span class="o">:</span> <span class="nf">lighten</span><span class="p">(</span><span class="nv">$ribbon_base_color</span><span class="o">,</span> <span class="mi">20</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="na">color</span><span class="o">:</span> <span class="nv">$ribbon_darker_color</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">@include</span><span class="nd"> gradient-vertical</span><span class="p">(</span><span class="nv">$ribbon_lighter_color</span><span class="o">,</span> <span class="nv">$ribbon_base_color</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">&amp;</span><span class="nd">:before</span><span class="o">,</span> <span class="k">&amp;</span><span class="nd">:after</span> <span class="p">{</span>
+</span><span class='line'>      <span class="na">border-top</span><span class="o">:</span>   <span class="mi">3</span><span class="kt">px</span> <span class="no">solid</span> <span class="nv">$ribbon_darker_color</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>With this mixin we can define a ribbon color just by specifying the base color like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'>  <span class="k">&amp;</span><span class="nc">.active</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">@include</span><span class="nd"> ribbon-color</span><span class="p">(</span><span class="mh">#8EBF45</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The final result is much more manageable.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nc">.ribbon-wrapper</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">width</span><span class="o">:</span> <span class="mi">106</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">height</span><span class="o">:</span> <span class="mi">93</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">overflow</span><span class="o">:</span> <span class="no">hidden</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">position</span><span class="o">:</span> <span class="no">absolute</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">z-index</span><span class="o">:</span> <span class="mi">9999</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.ribbon</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">font</span><span class="o">:</span> <span class="no">bold</span> <span class="mi">15</span><span class="kt">px</span> <span class="no">Sans-Serif</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">color</span><span class="o">:</span> <span class="mh">#333</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">text-align</span><span class="o">:</span> <span class="no">center</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">text-shadow</span><span class="o">:</span> <span class="nf">rgba</span><span class="p">(</span><span class="mi">255</span><span class="o">,</span><span class="mi">255</span><span class="o">,</span><span class="mi">255</span><span class="o">,</span><span class="mi">0</span><span class="mf">.5</span><span class="p">)</span> <span class="mi">0</span><span class="kt">px</span> <span class="mi">1</span><span class="kt">px</span> <span class="mi">0</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">position</span><span class="o">:</span> <span class="no">relative</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">padding</span><span class="o">:</span> <span class="mi">7</span><span class="kt">px</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">left</span><span class="o">:</span> <span class="mi">-28</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">top</span><span class="o">:</span> <span class="mi">17</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">width</span><span class="o">:</span> <span class="mi">120</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">@include</span><span class="nd"> rotate</span><span class="p">(</span><span class="mi">-45</span><span class="kt">deg</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">@include</span><span class="nd"> box-shadow</span><span class="p">(</span><span class="mi">0</span><span class="kt">px</span> <span class="mi">0</span><span class="kt">px</span> <span class="mi">3</span><span class="kt">px</span> <span class="nf">rgba</span><span class="p">(</span><span class="mi">0</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="mi">0</span><span class="mf">.3</span><span class="p">));</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">@mixin</span><span class="nf"> ribbon-color</span><span class="p">(</span><span class="nv">$ribbon_base_color</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nv">$ribbon_darker_color</span><span class="o">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$ribbon_base_color</span><span class="o">,</span> <span class="mi">30</span><span class="p">);</span>
+</span><span class='line'>    <span class="nv">$ribbon_lighter_color</span><span class="o">:</span> <span class="nf">lighten</span><span class="p">(</span><span class="nv">$ribbon_base_color</span><span class="o">,</span> <span class="mi">20</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="na">color</span><span class="o">:</span> <span class="nv">$ribbon_darker_color</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">@include</span><span class="nd"> gradient-vertical</span><span class="p">(</span><span class="nv">$ribbon_lighter_color</span><span class="o">,</span> <span class="nv">$ribbon_base_color</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">&amp;</span><span class="nd">:before</span><span class="o">,</span> <span class="k">&amp;</span><span class="nd">:after</span> <span class="p">{</span>
+</span><span class='line'>      <span class="na">border-top</span><span class="o">:</span>   <span class="mi">3</span><span class="kt">px</span> <span class="no">solid</span> <span class="nv">$ribbon_darker_color</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">&amp;</span><span class="nc">.active</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">@include</span><span class="nd"> ribbon-color</span><span class="p">(</span><span class="mh">#8EBF45</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">&amp;</span><span class="nc">.refused</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">@include</span><span class="nd"> ribbon-color</span><span class="p">(</span><span class="mh">#BD362F</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">&amp;</span><span class="nc">.inactive</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">@include</span><span class="nd"> ribbon-color</span><span class="p">(</span><span class="mh">#E6E6E6</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">&amp;</span><span class="nc">.deleted</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">@include</span><span class="nd"> ribbon-color</span><span class="p">(</span><span class="mh">#ff780b</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">&amp;</span><span class="nd">:before</span><span class="o">,</span> <span class="k">&amp;</span><span class="nd">:after</span> <span class="p">{</span>
+</span><span class='line'>    <span class="na">content</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+</span><span class='line'>    <span class="na">border-left</span><span class="o">:</span>  <span class="mi">3</span><span class="kt">px</span> <span class="no">solid</span> <span class="no">transparent</span><span class="p">;</span>
+</span><span class='line'>    <span class="na">border-right</span><span class="o">:</span> <span class="mi">3</span><span class="kt">px</span> <span class="no">solid</span> <span class="no">transparent</span><span class="p">;</span>
+</span><span class='line'>    <span class="nt">position</span><span class="nd">:absolute</span><span class="o">;</span>
+</span><span class='line'>    <span class="nt">bottom</span><span class="nd">:</span> <span class="nt">-3px</span><span class="o">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">&amp;</span><span class="nd">:before</span> <span class="p">{</span>
+</span><span class='line'>    <span class="na">left</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">&amp;</span><span class="nd">:after</span> <span class="p">{</span>
+</span><span class='line'>    <span class="na">right</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>There are probably other improvements to this code, but I&rsquo;m pretty happy with the results. Once you start using a css preprocessor like Sass, and realizing its power you cannot go back to plain css anymore.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -584,6 +1151,10 @@ Open up the inspector and you&rsquo;ll see something like this (or similar):</p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/07/21/using-sass-to-streamline-a-css-ribbon/">Using Sass to Streamline a Css Ribbon.</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/06/16/waiting-for-completed-ajax-in-capybara-and-other-tricks/">Waiting for Completed Ajax in Capybara and Other Tricks.</a>
