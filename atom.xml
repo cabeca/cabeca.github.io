@@ -4,7 +4,7 @@
   <title><![CDATA[Random Head Dumps]]></title>
   <link href="http://cabeca.github.io/atom.xml" rel="self"/>
   <link href="http://cabeca.github.io/"/>
-  <updated>2013-07-21T20:04:58+01:00</updated>
+  <updated>2013-07-21T20:09:12+01:00</updated>
   <id>http://cabeca.github.io/</id>
   <author>
     <name><![CDATA[Miguel Cabeça]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Using Sass to streamline a css ribbon.]]></title>
     <link href="http://cabeca.github.io/blog/2013/07/21/using-sass-to-streamline-a-css-ribbon/"/>
-    <updated>2013-07-21T14:08:00+01:00</updated>
+    <updated>2013-07-21T14:10:00+01:00</updated>
     <id>http://cabeca.github.io/blog/2013/07/21/using-sass-to-streamline-a-css-ribbon</id>
     <content type="html"><![CDATA[<p>For a simple listing page I was working on, I needed some sort of ribbon to depict a status for that listing item. Having seen lots of ribbons on various web pages I went shopping for some pre-made nice looking ribbons. I was using <a href="http://sass-lang.com">Sass</a> as a css preprocessor and <a href="https://github.com/thomas-mcdonald/bootstrap-sass">sass-bootstrap</a> for rapid prototyping so sure enough, the first google result for <code>sass bootstrap ribbon</code> yielded a <a href="https://github.com/twitter/bootstrap/issues/5550">rejected bootstrap issue</a> with a working <a href="http://jsfiddle.net/UBfCE/2/">jsfiddle</a> for a nice green ribbon.</p>
 
